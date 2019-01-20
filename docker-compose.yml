@@ -1,0 +1,24 @@
+version: '2.0'
+services:
+  mongodb:
+    image: frodenas/mongodb
+    container_name: portalx_mongodb
+    hostname: portalx_mongodb
+    environment:
+      MONGO_DATA_DIR: /data/db
+      MONGO_LOG_DIR: /dev/null
+      MONGODB_USERNAME: portalx
+      MONGODB_PASSWORD: portalx
+      MONGODB_DBNAME: portalx
+    ports:
+      - 27017:27017
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile-client
+    container_name: portalx_client
+    hostname: portalx_client
+    depends_on:
+      - mongodb
+    ports:
+      - 80:80
