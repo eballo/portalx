@@ -1,17 +1,28 @@
-version: '2.0'
+version: '3.1'
 services:
   mongodb:
-    image: frodenas/mongodb
+    image: mongo:3.4.2
     container_name: portalx_mongodb
     hostname: portalx_mongodb
+    restart: always
     environment:
-      MONGO_DATA_DIR: /data/db
-      MONGO_LOG_DIR: /dev/null
-      MONGODB_USERNAME: portalx
-      MONGODB_PASSWORD: portalx
-      MONGODB_DBNAME: portalx
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+      MONGO_INITDB_DATABASE: portalx
     ports:
-      - 27017:27017
+      - "27017:27017"
+    volumes:
+          - ./data/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+  mongodb-seed:
+    image: mongo:3.4.2
+    depends_on:
+      - mongodb
+    links:
+      - mongodb
+    volumes:
+      - ./data:/data
+    command:
+      'bash -c "mongoimport --host portalx_mongodb --username portalx --password portalx --db portalx --type json --file /data/data.json --jsonArray"'
   client:
     build:
       context: .

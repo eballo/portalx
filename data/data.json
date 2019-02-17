@@ -1,0 +1,16 @@
+ [{
+     "description": "Text1",
+     "latitude": 52.353193,
+     "longitude": 4.852484
+   },
+   {
+     "description": "Text2",
+     "latitude": 52.355516,
+     "longitude": 4.826854
+   },
+   {
+     "description": "Text3",
+     "latitude": 52.350631,
+     "longitude": 4.839959
+   }
+ ]
