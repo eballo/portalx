@@ -22,7 +22,7 @@ services:
     volumes:
       - ./data:/data
     command:
-      'bash -c "mongoimport --host portalx_mongodb --username portalx --password portalx --db portalx --type json --file /data/data.json --jsonArray"'
+      'bash -c "mongoimport --host portalx_mongodb --username portalx --password portalx --db portalx --type json --file /data/locations.json --jsonArray"'
   client:
     build:
       context: .

@@ -1,0 +1,7 @@
+portalx:
+  mongo:
+    database: portalx
+    user: portalx
+    password: portalx
+    replset: localhost\:27017
+    timeout: 1000
