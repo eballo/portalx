@@ -11,6 +11,6 @@
   "dependencies": {
     "bootstrap": "^4.2.1",
     "browser-sync": "^2.26.3",
-    "gulp": "^4.0.0"
+    "gulp": "^5.0.0"
   }
 }
